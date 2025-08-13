@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cronograma de Estudos — Premium</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="hero" role="banner">
+      <div class="hero-inner">
+        <div class="brand">
+          <svg width="44" height="44" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#b97bd8"/><stop offset="1" stop-color="#6d28d9"/></linearGradient></defs><rect rx="6" width="24" height="24" fill="url(#g)"></rect><path d="M6 13h12v2H6z" fill="#fff" opacity="0.95"/></svg>
+          <div class="title">
+            <h1>Cronograma de Estudos</h1>
+            <p class="subtitle">Concurso TJ-SP — rotina semanal personalizada</p>
+          </div>
+        </div>
+
+        <div class="progress-area" aria-hidden="false">
+          <div class="progress-meta">Progresso da Semana</div>
+          <div class="progress-wrap" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress-wrap">
+            <div id="progress-bar" class="progress-bar"></div>
+          </div>
+          <div class="progress-stats"><span id="progress-text">0%</span> concluído</div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container" id="cronograma" role="main">
+      <!-- SECTION TEMPLATE: data-tooltip contains the hidden manual shown on hover -->
+      <section class="day" data-tooltip="Foco: Português (morfossintaxe) + 20' de questões. Use anotações curtas e flashcards.">
+        <h2>Segunda-feira</h2>
+        <ul>
+          <li data-task-id="mon-1"><label><input type="checkbox" /> <strong>06h30–09h30</strong> — Português: teoria (morfossintaxe) + 20′ questões</label></li>
+          <li data-task-id="mon-2"><label><input type="checkbox" /> <strong>10h00–17h00</strong> — Trabalho remoto</label></li>
+          <li data-task-id="mon-3"><label><input type="checkbox" /> <strong>17h00–18h00</strong> — Direito Administrativo: Lei 8.666 + flashcards</label></li>
+          <li data-task-id="mon-4"><label><input type="checkbox" /> <strong>19h00–23h00</strong> — Faculdade presencial</label></li>
+          <li data-task-id="mon-5"><label><input type="checkbox" /> <strong>23h00–00h30</strong> — Revisão rápida (flashcards)</label></li>
+        </ul>
+      </section>
+
+      <section class="day" data-tooltip="Leituras ativas: mapas mentais e súmulas do STF.">
+        <h2>Terça-feira</h2>
+        <ul>
+          <li data-task-id="tue-1"><label><input type="checkbox" /> <strong>06h30–08h00</strong> — Mapas mentais (Português)</label></li>
+          <li data-task-id="tue-2"><label><input type="checkbox" /> <strong>10h00–17h00</strong> — Trabalho presencial</label></li>
+          <li data-task-id="tue-3"><label><input type="checkbox" /> <strong>17h00–18h00</strong> — Flashcards: Constitucional</label></li>
+          <li data-task-id="tue-4"><label><input type="checkbox" /> <strong>19h00–23h00</strong> — Faculdade presencial</label></li>
+          <li data-task-id="tue-5"><label><input type="checkbox" /> <strong>23h00–00h30</strong> — Revisão súmulas</label></li>
+        </ul>
+      </section>
+
+      <section class="day" data-tooltip="Direitos fundamentais + revisão por questões VUNESP.">
+        <h2>Quarta-feira</h2>
+        <ul>
+          <li data-task-id="wed-1"><label><input type="checkbox" /> <strong>06h30–09h30</strong> — Constitucional: teoria + 15′ questões</label></li>
+          <li data-task-id="wed-2"><label><input type="checkbox" /> <strong>10h00–17h00</strong> — Trabalho remoto</label></li>
+          <li data-task-id="wed-3"><label><input type="checkbox" /> <strong>17h00–18h00</strong> — Regimento Interno (TJ-SP)</label></li>
+          <li data-task-id="wed-4"><label><input type="checkbox" /> <strong>19h00–23h00</strong> — Faculdade presencial</label></li>
+          <li data-task-id="wed-5"><label><input type="checkbox" /> <strong>23h00–00h30</strong> — Revisão rápida</label></li>
+        </ul>
+      </section>
+
+      <section class="day" data-tooltip="Vídeo-aula + exercícios de RLMF.">
+        <h2>Quinta-feira</h2>
+        <ul>
+          <li data-task-id="thu-1"><label><input type="checkbox" /> <strong>06h30–09h30</strong> — Matemática Financeira & RLMF</label></li>
+          <li data-task-id="thu-2"><label><input type="checkbox" /> <strong>10h00–17h00</strong> — Trabalho remoto</label></li>
+          <li data-task-id="thu-3"><label><input type="checkbox" /> <strong>17h30–19h30</strong> — Faculdade online</label></li>
+          <li data-task-id="thu-4"><label><input type="checkbox" /> <strong>19h30–21h00</strong> — Exercícios RLMF</label></li>
+        </ul>
+      </section>
+
+      <section class="day" data-tooltip="Pratique Excel: tabelas dinâmicas e macros básicas.">
+        <h2>Sexta-feira</h2>
+        <ul>
+          <li data-task-id="fri-1"><label><input type="checkbox" /> <strong>06h30–09h30</strong> — Informática: Word/Excel/Windows</label></li>
+          <li data-task-id="fri-2"><label><input type="checkbox" /> <strong>10h00–17h00</strong> — Trabalho remoto</label></li>
+          <li data-task-id="fri-3"><label><input type="checkbox" /> <strong>17h30–19h30</strong> — Faculdade online</label></li>
+          <li data-task-id="fri-4"><label><input type="checkbox" /> <strong>19h30–21h00</strong> — Prática de Excel</label></li>
+        </ul>
+      </section>
+
+      <section class="day" data-tooltip="Penal/Processual + Lei Orgânica do TJ-SP.">
+        <h2>Sábado</h2>
+        <ul>
+          <li data-task-id="sat-1"><label><input type="checkbox" /> <strong>08h00–12h00</strong> — Direito Penal e Processual Penal</label></li>
+          <li data-task-id="sat-2"><label><input type="checkbox" /> <strong>14h00–18h00</strong> — Lei Orgânica & Regimento</label></li>
+        </ul>
+      </section>
+
+      <section class="day" data-tooltip="Simulado completo e correção - foco em tempo e acerto.">
+        <h2>Domingo</h2>
+        <ul>
+          <li data-task-id="sun-1"><label><input type="checkbox" /> <strong>08h00–12h00</strong> — Simulado completo</label></li>
+          <li data-task-id="sun-2"><label><input type="checkbox" /> <strong>14h00–17h00</strong> — Correção e revisão</label></li>
+        </ul>
+      </section>
+
+      <div class="actions">
+        <button id="download-transcript" class="btn">Baixar resumo agora</button>
+        <div id="status-msg" class="status-msg" role="status" aria-live="polite"></div>
+      </div>
+    </main>
+
+    <!-- Modal confirmation -->
+    <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="modal-panel">
+        <h3>Semana concluída</h3>
+        <p>Parabéns — você concluiu todas as tarefas da semana. Deseja salvar e baixar o resumo agora?</p>
+        <div class="modal-actions">
+          <button id="modal-download" class="btn">Baixar transcript</button>
+          <button id="modal-close" class="btn-muted">Fechar</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

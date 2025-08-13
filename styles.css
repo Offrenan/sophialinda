@@ -1,0 +1,253 @@
+/* styles.css — Versão final ajustada
+   Fundo contínuo preto + lilás, blobs decorativos seguros,
+   sem artefatos de faixa. */
+
+/* ---- Variáveis de tema ---- */
+:root{
+  --bg-dark:#030304;
+  --panel:#0f0f12;
+  --muted:#a9a9b2;
+  --lilac-1:#c084fc;
+  --lilac-2:#9b59b6;
+  --accent:#b97bd8;
+  --glow: rgba(152,87,177,0.14);
+}
+
+/* ---- Reset / base ---- */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+  color:#eaeaf2;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  background: radial-gradient(1000px 500px at 10% 10%, rgba(155,89,182,0.04), transparent 8%),
+              linear-gradient(180deg,#050505 0%, #0b0b0d 100%);
+  position:relative;
+  overflow-y:overlay;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+/* ---- Decorative background blobs (safe, full coverage) ----
+   Implementadas em body::before / body::after e dimensionadas para cobrir toda viewport
+*/
+body::before,
+body::after{
+  content:"";
+  position:fixed;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:160vmax;
+  height:160vmax;
+  pointer-events:none;
+  z-index:0;
+  mix-blend-mode:screen;
+  filter: blur(60px) saturate(120%);
+  opacity:0.28;
+}
+
+/* large ambient lilac / left-top */
+body::before{
+  background:
+    radial-gradient(closest-side at 20% 30%, rgba(185,123,216,0.24), rgba(155,89,182,0.18) 8%, transparent 20%),
+    radial-gradient(closest-side at 80% 70%, rgba(192,132,252,0.14), rgba(107,33,168,0.08) 10%, transparent 30%);
+  transform: translate(-40%,-30%) rotate(8deg);
+  animation: floatSlow 18s ease-in-out infinite;
+}
+
+/* deep violet glow / right-bottom */
+body::after{
+  background:
+    radial-gradient(closest-side at 80% 20%, rgba(152,87,177,0.14), rgba(107,33,168,0.08) 10%, transparent 30%);
+  transform: translate(30%,40%) rotate(-6deg);
+  animation: floatSlow 22s ease-in-out infinite reverse;
+  opacity:0.26;
+}
+
+/* small animation for gentle movement */
+@keyframes floatSlow {
+  0%{ transform:translate(-40%,-30%) rotate(0deg) scale(1); }
+  50%{ transform:translate(-36%,-34%) rotate(6deg) scale(1.06); }
+  100%{ transform:translate(-40%,-30%) rotate(0deg) scale(1); }
+}
+
+/* ---- Page wrapper (ensure content above decorative layers) ---- */
+.page{position:relative;z-index:2;min-height:100vh;}
+
+/* ---- Header (hero) ----
+   Keep hero visually integrated (transparent background) to avoid block bands
+*/
+.hero{
+  padding:36px 20px 18px;
+  position:relative;
+  z-index:3;
+  background: transparent;
+  border-bottom: 1px solid rgba(255,255,255,0.02);
+  backdrop-filter: blur(4px) saturate(110%);
+}
+.hero-inner{
+  max-width:1100px;
+  margin:0 auto;
+  display:flex;
+  gap:24px;
+  align-items:center;
+  flex-wrap:wrap;
+  justify-content:space-between;
+}
+.brand{display:flex;align-items:center;gap:14px;z-index:3}
+.title h1{
+  font-family:Montserrat, Inter, sans-serif;
+  margin:0;
+  font-size:22px;
+  color:var(--accent);
+}
+.subtitle{margin:4px 0 0;font-size:13px;color:var(--muted)}
+
+/* ---- Progress bar ---- */
+.progress-area{min-width:320px;max-width:540px}
+.progress-meta{font-size:12px;color:var(--lilac-2);font-weight:600;margin-bottom:8px}
+.progress-wrap{
+  height:14px;
+  width:100%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.02));
+  border-radius:999px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,0.02);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+}
+.progress-bar{
+  height:100%;
+  width:0%;
+  background: linear-gradient(90deg,var(--lilac-2),var(--accent));
+  border-radius:999px;
+  box-shadow: 0 12px 44px rgba(184,108,212,0.12), inset 0 -4px 12px rgba(0,0,0,0.45);
+  transition: width 520ms cubic-bezier(.2,.9,.2,1);
+}
+.progress-stats{text-align:right;margin-top:8px;font-size:13px;color:var(--muted)}
+#progress-text{font-weight:700;color:var(--accent)}
+
+/* ---- Main container and day cards ---- */
+.container{max-width:1100px;margin:28px auto;padding:0 20px;position:relative;z-index:3}
+
+/* Day cards: glass + soft border gradient + lilac inner glow */
+.day{
+  position:relative;
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.02));
+  border-radius:14px;
+  padding:18px;
+  margin-bottom:18px;
+  border:1px solid rgba(155,89,182,0.06);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.55);
+  overflow:visible;
+  transition: transform .22s ease, box-shadow .22s ease;
+}
+.day:hover{transform:translateY(-6px);box-shadow:0 32px 90px rgba(0,0,0,0.7)}
+.day h2{
+  margin:0 0 8px;
+  color:var(--lilac-1);
+  font-size:18px;
+  padding-left:8px;
+  border-left:4px solid var(--lilac-2);
+  display:inline-block;
+}
+
+/* soft lilac glow behind each card via ::before (small and subtle) */
+.day::before{
+  content:"";
+  position:absolute;
+  inset: -6px -6px auto auto;
+  width:180px;height:180px;
+  border-radius:20%;
+  background: radial-gradient(closest-side, rgba(185,123,216,0.06), rgba(155,89,182,0.02));
+  filter: blur(18px);
+  z-index:-1;
+  transform:translate(12px,-8px) rotate(-12deg);
+  opacity:0.9;
+  transition:opacity .3s ease;
+}
+.day:hover::before{opacity:1}
+
+/* Tooltip / manual: elegant floating card */
+.day::after{
+  content: attr(data-tooltip);
+  position:absolute;
+  left:22px;
+  top:-60px;
+  width:auto;
+  max-width:360px;
+  background: linear-gradient(180deg, var(--lilac-2), var(--accent));
+  color:white;
+  padding:10px 14px;
+  border-radius:10px;
+  box-shadow: 0 12px 40px rgba(136,84,208,0.18);
+  font-size:13px;
+  line-height:1.3;
+  opacity:0;
+  transform: translateY(-10px) scale(.98);
+  pointer-events:none;
+  transition:all .18s ease;
+  z-index:4;
+  white-space:normal;
+}
+.day:hover::after{opacity:1; transform:translateY(0) scale(1)}
+
+/* ---- Task list ---- */
+ul{list-style:none;padding:0;margin:0}
+li{
+  display:flex;align-items:center;gap:14px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.01));
+  padding:12px;border-radius:10px;margin:10px 0;border:1px solid rgba(255,255,255,0.02);
+  transition: transform .14s ease, box-shadow .14s ease;
+}
+li:hover{transform:translateY(-6px);box-shadow:0 14px 28px rgba(0,0,0,0.55)}
+li label{flex:1;cursor:pointer;font-size:14px;color:var(--muted);display:flex;gap:10px;align-items:center}
+li strong{color:#fff;font-weight:600;width:150px;display:inline-block}
+
+/* custom checkbox (clean) */
+li input[type="checkbox"]{
+  appearance:none;
+  width:18px;height:18px;border-radius:6px;border:2px solid rgba(255,255,255,0.06);
+  position:relative;background:transparent;cursor:pointer;flex-shrink:0;
+  transition:all .12s ease;
+}
+li input[type="checkbox"]:checked{
+  background:linear-gradient(180deg,var(--lilac-2),var(--accent));
+  border:none;
+  box-shadow: 0 10px 30px rgba(152,87,177,0.14), inset 0 -3px 8px rgba(0,0,0,0.25);
+}
+li input[type="checkbox"]:checked::after{
+  content:""; position:absolute; left:6px; top:3px; width:5px; height:9px;
+  border:2px solid white; border-top:0; border-left:0; transform:rotate(40deg);
+}
+
+/* completed state */
+li.completed{opacity:0.78;color:#9a9a9a;text-decoration:line-through;background:linear-gradient(180deg, rgba(0,0,0,0.01), rgba(0,0,0,0.02));transform:none;box-shadow:none}
+
+/* ---- Actions and modal ---- */
+.actions{display:flex;gap:12px;align-items:center;margin-top:8px}
+.btn{background:linear-gradient(90deg,var(--lilac-2),var(--accent));padding:10px 14px;border-radius:10px;border:none;color:white;font-weight:700;cursor:pointer;box-shadow:0 12px 36px rgba(152,87,177,0.14)}
+.btn:hover{transform:translateY(-4px)}
+.btn-muted{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted);padding:10px 12px;border-radius:8px}
+.status-msg{color:var(--muted);font-size:13px;margin-left:8px}
+
+/* modal */
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,2,2,0.6);backdrop-filter:blur(6px);z-index:90}
+.modal[aria-hidden="false"]{display:flex}
+.modal-panel{background:linear-gradient(180deg,#0f0f12,#0b0b0d);padding:24px;border-radius:14px;max-width:420px;width:90%;text-align:center;border:1px solid rgba(155,89,182,0.06)}
+.modal-panel h3{margin:0 0 8px;color:var(--lilac-1)}
+.modal-panel p{color:var(--muted);margin-bottom:16px}
+.modal-actions{display:flex;gap:10px;justify-content:center}
+
+/* ---- Responsive tweaks ---- */
+@media (max-width:720px){
+  .hero-inner{flex-direction:column;align-items:flex-start;gap:12px}
+  .progress-wrap{width:100%}
+  li strong{display:block;width:auto}
+  .day::after{left:10px;right:10px;top:-54px;max-width:calc(100% - 40px)}
+}
+
+/* ---- Utility ---- */
+.visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
